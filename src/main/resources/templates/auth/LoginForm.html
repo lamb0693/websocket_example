@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/layout.html}" >
+
+<th:block layout:fragment="cssFrag">
+    <!--/* link rel="stylesheet" href="/css/loginForm.css" */-->
+</th:block>
+
+<div class="container" layout:fragment="content">
+
+    <section class="s_membership">
+        <h1>로 그 인</h1>
+        <div class="login_form">
+            <div class="fs-6 text-danger mb-3" th:if="${param.error}">
+                <span th:text="${message}"></span>
+            </div>
+            <form th:action="@{/auth/login}" method="post">
+                <div><label for="username">아이디(Email)</label><input type="text" name="username" id="username" placeholder="username"></div>
+                <div><label for="password">비밀번호</label><input type="password" id="password" name="password"></div>
+                <!--/* div><input type="checkbox"> &nbsp;<label>자동로그인</label></div */-->
+                <div class="login_btn">
+                    <input type="submit" value="로그인">
+                </div>
+                <div>
+                    <label class="fs-6" for="remember">remember me</label><input class="fs-6" id="remember" type="checkbox" name="remember-me">
+                </div>
+            </form>
+            <!--/* div>
+                <a href="/member/forgotPassword" style="font-size:20px">forgot password?</a>
+            </div>
+            <div>
+                <a href="/oauth2/authorization/google" style="font-size:20px">Google</a>
+            </div */-->
+        </div>
+    </section>
+
+    <script th:inline="javascript">
+<!--        console.log("resetPwdResult :" + [[${resetPwdResult}]] )-->
+<!--        let resetPwdResult = [[${resetPwdResult}]];-->
+<!--        if(resetPwdResult) alert(resetPwdResult);-->
+    </script>
+</div>
+
+<!--/*  넘어온 결과에 대한 표시 */-->
